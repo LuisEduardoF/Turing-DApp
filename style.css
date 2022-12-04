@@ -46,7 +46,7 @@
   }
   
   .timeline-1 .event:before {
-    left: -180px;
+    left: -160px;
     content: attr(data-date);
     text-align: right;
     font-weight: 100;
