@@ -1,24 +1,22 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="style.css">
     <title>Turing DApp</title>
 </head>
 <body>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-
-
 <div class="d-flex justify-content-center" style="margin-top: 1em;">
     <div class="container">
     <div class="row">
         <div class="col-sm-4">
-            <div class="card">
+            <div class="card" id = "issueToken">
                 <div class="card-body">
                     <h5 class="card-title mb-0">issueToken</h5>
                 </div>
@@ -33,14 +31,14 @@
                     <tbody>
                         <tr>
                         <td>
-                            <input type="amount" class="form-control" placeholder="Adress" id="amount">
+                            <input class="form-control" placeholder="Adress" id="issueToken-receiver-adress">
                             <span class="text-success" id="available"></span>
                         </td>
                         <td>
-                            <input type="amount" class="form-control" placeholder="Turing ammount" id="amount">
+                            <input class="form-control" placeholder="Turing ammount" id="issueToken-amount">
                         </td>
                         <td>
-                            <button type="button" class="btn btn-outline-info btn-circle btn-md btn-circle"><i class="fa fa-check"></i> </button>
+                            <button type="button" class="btn btn-outline-info btn-circle btn-md btn-circle" id="issueToken-button"><i class="fa fa-check"></i> </button>
                         </td>
                         </tr>
                     </tbody>
@@ -49,7 +47,7 @@
             </div>
         </div>
         <div class="col-sm-4">
-            <div class="card">
+            <div class="card" id = "vote">
                 <div class="card-body">
                     <h5 class="card-title mb-0">vote</h5>
                 </div>
@@ -65,14 +63,14 @@
                     <tbody>
                         <tr>
                         <td>
-                            <input type="amount" class="form-control" placeholder="Name" id="amount">
+                            <input class="form-control" placeholder="Name" id="vote-receiver-name">
                             <span class="text-success" id="available"></span>
                         </td>
                         <td>
-                            <input type="amount" class="form-control" placeholder="Turing ammount" id="amount">
+                            <input type="amount" class="form-control" placeholder="Turing ammount" id="vote-amount">
                         </td>
                         <td>
-                            <button type="button" class="btn btn-outline-info btn-circle btn-md btn-circle"><i class="fa fa-check"></i> </button>
+                            <button type="button" class="btn btn-outline-info btn-circle btn-md btn-circle" id="vote-button"><i class="fa fa-check"></i> </button>
                         </td>
                         </tr>
                     </tbody>
@@ -80,8 +78,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-4">
-            <div class="card">
+        <div class="col-sm-4" >
+            <div class="card mb-3" id = "endVoting">
                 <div class="card-body">
                     <h5 class="card-title mb-0">endVoting</h5>
                 </div>
@@ -95,7 +93,7 @@
                     <tbody>
                         <tr>
                         <td>
-                            <button type="button" class="btn btn-outline-info btn-circle btn-md btn-circle"><i class="fa fa-check"></i> </button>
+                            <button type="button" class="btn btn-outline-danger btn-circle btn-md btn-circle"  id="endVoting-button"><i class="fa fa-times"></i> </button>
                         </td>
                         </tr>
                     </tbody>
@@ -104,6 +102,47 @@
             </div>
         </div>
     </div>
+    </div>
+</div>
+<div class="container" style="margin-top: 5em;">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title mb-0 text-center">History</h5>
+            </div>
+            <div id="content2">
+            <ul class="timeline-1 text-black" id="history">
+            </ul>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div id="content">
+          <ul class="timeline-1 text-black">
+            <li class="event" data-date="12:30 - 1:00pm">
+              <h4 class="mb-3">Registration</h4>
+              <p>Get here on time, it's first come first serve. Be late, get turned away.</p>
+            </li>
+            <li class="event" data-date="2:30 - 4:00pm">
+              <h4 class="mb-3 pt-3">Opening Ceremony</h4>
+              <p>Get ready for an exciting event, this will kick off in amazing fashion with MOP &amp; Busta
+                Rhymes as an opening show.</p>
+            </li>
+            <li class="event" data-date="5:00 - 8:00pm">
+              <h4 class="mb-3 pt-3">Main Event</h4>
+              <p>This is where it all goes down. You will compete head to head with your friends and rivals. Get
+                ready!</p>
+            </li>
+            <li class="event" data-date="8:30 - 9:30pm">
+              <h4 class="mb-3 pt-3">Closing Ceremony</h4>
+              <p class="mb-0">See how is the victor and who are the losers. The big stage is where the winners
+                bask in their
+                own glory.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
 </div>
 <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>

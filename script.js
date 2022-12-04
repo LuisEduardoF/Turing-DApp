@@ -2,7 +2,7 @@
 let TuringContract;
 
 // 2. Configuração do endereço do contrato e ABI
-const TuringContract_Address = "0x7559A10215D90732D6B5ac153Ad039E76e9CcDe2";
+const TuringContract_Address = "0xb970AeA11459d69C7a4D9fdDC1f373560c454534";
 const TuringContract_ABI = [
 	{
 		"inputs": [],
@@ -35,55 +35,6 @@ const TuringContract_ABI = [
 		"type": "event"
 	},
 	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"internalType": "address",
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"internalType": "uint256",
-				"name": "value",
-				"type": "uint256"
-			}
-		],
-		"name": "Transfer",
-		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "owner",
-				"type": "address"
-			},
-			{
-				"internalType": "address",
-				"name": "spender",
-				"type": "address"
-			}
-		],
-		"name": "allowance",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -105,38 +56,6 @@ const TuringContract_ABI = [
 			}
 		],
 		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "account",
-				"type": "address"
-			}
-		],
-		"name": "balanceOf",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "decimals",
-		"outputs": [
-			{
-				"internalType": "uint8",
-				"name": "",
-				"type": "uint8"
-			}
-		],
-		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -213,45 +132,6 @@ const TuringContract_ABI = [
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "name",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "symbol",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "totalSupply",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -274,6 +154,31 @@ const TuringContract_ABI = [
 		],
 		"stateMutability": "nonpayable",
 		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "Transfer",
+		"type": "event"
 	},
 	{
 		"inputs": [
@@ -321,8 +226,162 @@ const TuringContract_ABI = [
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "spender",
+				"type": "address"
+			}
+		],
+		"name": "allowance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			}
+		],
+		"name": "balanceOf",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "decimals",
+		"outputs": [
+			{
+				"internalType": "uint8",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "name",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "symbol",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "totalSupply",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "whoItIs",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "addr",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "valid",
+						"type": "bool"
+					}
+				],
+				"internalType": "struct User",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
 	}
 ];
+const teacher_address = "0xA5095296F7fF9Bdb01c22e3E0aC974C8963378ad"
+const issueTokenCard = document.querySelector("#issueToken");
+const issueTokenReceiver = document.querySelector("#issueToken-receiver-adress");
+const issueTokenAmount = document.querySelector("#issueToken-amount");
+const issueTokenButton = document.querySelector("#issueToken-button");
+
+const voteCard = document.querySelector("#vote");
+const voteReceiver = document.querySelector("#vote-receiver-name");
+const voteAmount = document.querySelector("#vote-amount");
+const voteButton = document.querySelector("#vote-button");
+
+const endVotingCard = document.querySelector("#endVoting");
+const endVotingButton = document.querySelector("#endVoting-button");
+if(localStorage.getItem("transaction_history") === null){
+	localStorage.setItem("transaction_history", JSON.stringify([]));
+}
+const hist = JSON.parse(localStorage.getItem("transaction_history"));
+const history = document.querySelector("#history");
+
+function updateHistory(type, elem){
+	if(elem !== null)
+		history.insertAdjacentHTML('afterbegin', `<li class=\"event\" data-date=\"${elem["time"]}\"><h4 style=\"display:table-cell;\">${type}</h4><em class=\"to\">${elem["sender"]} (+0.2) &rarr; ${elem["receiver"]} (+${elem["amount"]/(10**18)})</em></li>`);
+	else{
+		for(elem_aux in hist){
+			history.insertAdjacentHTML('afterbegin', `<li class=\"event\" data-date=\"${hist[elem_aux]["time"]}\"><h4 style=\"display:table-cell;\">${hist[elem_aux]["type"]}</h4><em class=\"to\">${hist[elem_aux]["sender"]} (+0.2) &rarr; ${hist[elem_aux]["receiver"]} (+${hist[elem_aux]["amount"]/(10**18)})</em></li>`);
+		}
+	}
+}
+updateHistory("",null);
 
 /* 3. Prompt user to sign in to MetaMask */
 const provider = new ethers.providers.Web3Provider(window.ethereum, "goerli");
@@ -330,8 +389,16 @@ provider.send("eth_requestAccounts", []).then(() => {
     provider.listAccounts().then((accounts) => {
         const signer = provider.getSigner(accounts[0]);
 
-        console.log(signer._address);
+		if(signer._address != teacher_address){
+			issueTokenCard.style = "box-shadow: 0 0 0 200px rgba(0, 0, 0, 0.301) inset;";
+			issueTokenButton.style.visibility = "hidden";
+			issueTokenReceiver.disabled = true;
+			issueTokenAmount.disabled = true;
 
+			endVotingCard.style = "box-shadow: 0 0 0 200px rgba(0, 0, 0, 0.301) inset;";
+			endVotingButton.style.visibility = "hidden";
+
+		}
         /* 3.1 Create instance of pet smart contract */
         TuringContract = new ethers.Contract(
             TuringContract_Address,
@@ -341,54 +408,39 @@ provider.send("eth_requestAccounts", []).then(() => {
     });
 });
 
-// 4. Creating variables for reusable dom elements
-const petFormSection = document.querySelector(".pet-form-section");
-const showPetFormBtn = document.querySelector(".show-pet-form-btn");
-const petSection = document.querySelector(".pet-detail-section");
-const setPetButton = document.querySelector("#set-new-pet");
-const refreshBtn = document.querySelector(".refresh-pet-details-btn");
-
 /* 5. Function to set pet details */
-const setNewPet = () => {
-    // update button value
-    setPetButton.value = "Setting Pet...";
+const vote = async() => {
 
     /* 5.1 Get inputs from pet form */
-    const petNameInput = document.querySelector("#pet-name");
-    const petOwnerInput = document.querySelector("#pet-owner");
-    const petAgeInput = document.querySelector("#pet-age");
-
+    const voteReceiver = document.querySelector("#vote-receiver-name");
+	const voteAmount = document.querySelector("#vote-amount");
     // 5.2 Getting values from the inputs
-    petName = petNameInput.value;
-    petOwner = petOwnerInput.value;
-    petAge = petAgeInput.value;
+    receiver = voteReceiver.value;
+    amount = (voteAmount.value*10**18).toString();
+	
+	console.log(amount)
+	const user = await TuringContract.whoItIs();
 
+	TuringContract.vote(receiver, amount)
+	.then(() => {
+		/* 5.4 Reset form */
+		voteReceiver.value = "";
+		voteAmount.value = "";
+
+		/* 5.5 Get pet details from smart contract */
+		const actual_time = new Date()
+		const info = {"type":"Vote", "sender":user[1], "receiver":receiver, "amount":amount, "time":`${actual_time.getHours()}:${actual_time.getMinutes()} ${actual_time.getDay()}/${actual_time.getMonth()}/${actual_time.getFullYear()}`};
+		hist.push(info);
+		localStorage.setItem("transaction_history", JSON.stringify(hist));
+		updateHistory("Vote", info);
+	})
+	.catch((err) => {
+		alert("Error in vote: " + err.message);
+	});
     /* 5.3 Set pet details in smart contract */
-    PetContract.setPet(petName, petOwner, petAge)
-        .then(() => {
-            // update button value
-            setPetButton.value = "Pet Set...";
-
-            /* 5.4 Reset form */
-            petNameInput.value = "";
-            petOwnerInput.value = "";
-            petAgeInput.value = "";
-
-            // update button value
-            setPetButton.value = "Set Pet";
-
-            /* 5.5 Get pet details from smart contract */
-            getCurrentPet();
-        })
-        .catch((err) => {
-            // If error occurs, display error message
-            setPetButton.value = "Set Pet";
-            alert("Error setting pet details" + err.message);
-        });
 };
 
-/* Function to set pet details on click of button */
-setPetButton.addEventListener("click", setNewPet);
+voteButton.addEventListener("click", vote);
 
 /* 6. Function to get pet details */
 const getCurrentPet = async() => {
