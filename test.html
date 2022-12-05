@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Live Crypto </title>
+    <!-- load in bulma style sheet -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <!-- insert css here -->
+    <style>
+        .table {
+            background-color:#ffe08a;
+        }
+        .table thead th {
+            color: #946c00;
+        }
+        .table tbody {
+            background-color: #fffaeb;
+        }
+        #leaderboard #cryptocurrencies tr {
+            display:block;
+            clear: both;
+            position: absolute;
+            -moz-transition-duration: 1s;
+            -webkit-transition-duration: 1s;
+            -ms-transition-duration: 1s;
+        }
+        .rank{
+            width: 60px;
+        }
+        .name{
+            width: 200px;
+        }
+        .symbol{
+            width: 80px;
+        }
+        .price{
+            width: 100px;
+        }
+        .market_cap{
+            width: 150px;
+        }
+        .circulating_supply{
+            width: 170px;
+        }
+        .volume_24h{
+            width: 140px;
+        }
+        .percent_change_24h{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- create a table here -->
+    <table class="table is-narrow is-hoverable" id="leaderboard">
+        <thead>
+            <tr>
+                <th class="rank"><abbr title="Position">Rank</abbr></th>
+                <th class="name">Name</th>
+                <th class="symbol">Symbol</th>
+                <th class="price">Price(USD)</th>
+                <th class="market_cap">Market Cap</th>
+                <th class="circulating_supply">Circulating Supply</th>
+                <th class="volume_24h">Volume(24h)</th>
+                <th class="percent_change_24h">24h %</th>
+            </tr>
+        </thead>
+        <tbody id="cryptocurrencies">
+        </tbody>  
+    </table>
+    
+    <!-- load in jquery script to use jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    
+    <!-- main script -->
+    <script>
+        // fetch cryptocurrency data and store it in the variable data
+        var xhReq = new XMLHttpRequest();
+        xhReq.open("GET", "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd", false);
+        xhReq.send(null);
+        var data = JSON.parse(xhReq.responseText); 
+
+        // initialization
+        var users = {};
+        users["0xD07318971e2C15b4f8d3d28A0AEF8F16B9D8EAb6"] = "Andre";
+        users["0x127B963B9918261Ef713cB7950c4AD16d4Fe18c6"] = "Antonio";
+        users["0x5d84D451296908aFA110e6B37b64B1605658283f"] = "Ratonilo";
+        users["0x500E357176eE9D56c336e0DC090717a5B1119cC2"] = "eduardo";
+        users["0x5217A9963846a4fD62d35BB7d58eAB2dF9D9CBb8"] = "Enzo";
+        users["0xFED450e1300CEe0f69b1F01FA85140646E596567"] = "Fernando";
+        users["0xFec23E4c9540bfA6BBE39c4728652F2def99bc1e"] = "Juliana";
+        users["0x6701D0C23d51231E676698446E55F4936F5d99dF"] = "Altoe";
+        users["0x8321730F4D59c01f5739f1684ABa85f8262f8980"] = "Salgado";
+        users["0x4A35eFD10c4b467508C35f8C309Ebc34ae1e129a"] = "Regata";
+        users["0xDD551702Dc580B7fDa2ddB7a1Ca63d29E8CDCf33"] = "Luis";
+        users["0x01fe9DdD4916019beC6268724189B2EED8C2D49a"] = "Nicolas";
+        users["0x726150C568f3C7f1BB3C47fd1A224a5C3F706BB1"] = "Rauta";
+        users["0xCAFE34A88dCac60a48e64107A44D3d8651448cd9"] = "Silva";
+        users["0xDfb0B8b7530a6444c73bFAda4A2ee3e482dCB1E3"] = "Sophie";
+        users["0xBeb89bd95dD9624dEd83b12dB782EAE30805ef97"] = "Thiago";
+        users["0xEe4768Af8caEeB042Da5205fcd66fdEBa0F3FD4f"] = "Brito";
+        users["0x89e66f9b31DAd708b4c5B78EF9097b1cf429c8ee"] = "ulopesu";
+        users["0x48cd1D1478eBD643dba50FB3e99030BE4F84d468"] = "Vinicius";
+        users["0xFADAf046e6Acd9E276940C728f6B3Ac1A043054c"] = "Bonella";
+        users["0xDcC5b1FdB2985D9662e74eFDbB41cAC5eb8C883A"] = "Dudu";
+        var rank = [];
+        for(var i in users){
+            rank.push({address:i, votes:0});
+        }
+        var timerId;
+        var updateInterval = 1000;
+
+
+        function ascending(a, b) { return a.votes > b.votes ? 1 : -1; }
+        function descending(a, b) { return a.votes < b.votes ? 1 : -1; }
+        function reposition() {
+            var height = $("#cryptocurrencies .cryptocurrency").height();
+            var y = height;
+            for(var i in users) {
+                users[i].$item.css("top", y + "px");
+                y += height;			
+            }
+        }  
+        function updateRanks(users) {
+            for(var i in users) {
+                users[i].$item.find(".rank").text(i + 1);	
+            }
+        }
+
+        function fetchNewData(data,attributeName,name){
+            for(var x in data){
+                if((data[x].name == name) == true) {
+                    return data[x][attributeName];
+                }
+            }
+            return null;
+        }        
+        function updateBoard() {
+            var cryptocurrency = getRandomCoin();	
+            cryptocurrency.percent_change_24h += getRandomScoreIncrease();
+            cryptocurrency.$item.find(".percent_change_24h").text(cryptocurrency.percent_change_24h);
+            cryptocurrencies.sort(descending);
+            updateRanks(cryptocurrencies);
+            reposition();
+        }
+
+        function getNewData(){
+            // get the new data for each coin and change to their new values
+            var newReq = new XMLHttpRequest();
+            newReq.open("GET", "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd", false);
+            newReq.send(null);
+            var newData = JSON.parse(newReq.responseText); 
+
+            for(var i = 0; i < cryptocurrencies.length; i++) {
+                var cryptocurrency = cryptocurrencies[i];
+                cryptocurrency.price = fetchNewData(newData,'current_price',cryptocurrency.name);
+                cryptocurrency.$item.find(".price").text(cryptocurrency.price);
+                cryptocurrency.volume_24h = fetchNewData(newData,'total_volume',cryptocurrency.name);
+                cryptocurrency.$item.find(".volume_24h").text(cryptocurrency.volume_24h);
+                cryptocurrency.percent_change_24h = fetchNewData(newData,'market_cap_change_percentage_24h',cryptocurrency.name);
+                cryptocurrency.$item.find(".percent_change_24h").text(cryptocurrency.percent_change_24h);
+            }
+            cryptocurrencies.sort(descending);
+            updateRanks(cryptocurrencies);
+            reposition();
+            console.log('Finished retrieving new data');
+            
+        }
+        function getRandomScoreIncrease() {
+            return getRandomBetween(50, 150);
+        }
+        function getRandomBetween(minimum, maximum) {
+                return Math.floor(Math.random() * maximum) + minimum;
+        }
+        function resetBoard() {
+            var $list = $("#cryptocurrencies");
+            $list.find(".cryptocurrency").remove();
+            if(timerId !== undefined) {
+                clearInterval(timerId);
+            }
+            cryptocurrencies = [];
+            for(let i = 0;i < 25;i++){
+                cryptocurrencies.push(
+                    {
+                        name : data[i].name,
+                        symbol: data[i].symbol,
+                        price: data[i].current_price,
+                        market_cap: data[i].market_cap,
+                        circulating_supply: Math.round(data[i].circulating_supply),
+                        volume_24h: data[i].total_volume,
+                        percent_change_24h: data[i].market_cap_change_percentage_24h,
+                    }
+                )
+            }
+            
+            for(var i = 0; i < cryptocurrencies.length; i++) {
+                var $item = $(
+                    "<tr class='cryptocurrency'>" + 
+                        "<th class='rank'>" + (i + 1) + "</th>" + 
+                        "<td class='name'>" + cryptocurrencies[i].name + "</td>" + 
+                        "<td class='symbol'>" + cryptocurrencies[i].symbol + "</td>" + 
+                        "<td class='price'>" + cryptocurrencies[i].price + "</td>" + 
+                        "<td class='market_cap'>" + cryptocurrencies[i].market_cap + "</td>" + 
+                        "<td class='circulating_supply'>" + cryptocurrencies[i].circulating_supply + "</td>" + 
+                        "<td class='volume_24h'>" + cryptocurrencies[i].volume_24h + "</td>" + 
+                        "<td class='percent_change_24h'>" + cryptocurrencies[i].percent_change_24h + "</td>" +
+                    "</tr>"
+                );
+
+                cryptocurrencies[i].$item = $item;
+                $list.append($item);
+            }
+            cryptocurrencies.sort(descending);
+            updateRanks(cryptocurrencies);
+            reposition();
+            
+            // fetch new data for the updateInterval
+            timerId = setInterval("getNewData();", updateInterval);
+
+        }	
+        resetBoard();
+    </script>
+</body>
+</html>

@@ -1,3 +1,4 @@
+
 .timeline-1 {
     border-left: 3px solid #b565a7;
     border-bottom-right-radius: 4px;
@@ -119,3 +120,69 @@
   .form-control{
     background-color: transparent;
   }
+  #content3 {
+    position: relative;
+    display: inline-block;
+    height: 30em;
+    width: auto;
+    max-height: 40em;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  #leaderboard{
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0px;
+    position: relative;
+  }
+  #leaderboard #users{
+    width: 2em;
+    height: 2em;
+    top: -8%;
+    left: 25%;
+    position: relative;
+    flex-wrap: wrap;
+  }
+  .user {
+    position: absolute;
+    display: block;
+    width: 50%;
+    -moz-transition-duration: 1s;
+    -webkit-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+  }
+.rank{
+    width: 2%;
+}
+.name{
+    width: 60%;
+}
+.value{
+  width: 38%;
+}
+#leaderboard {
+  border-collapse: inherit;
+  border-color: black;
+}
+#leaderboard tr {
+  border-collapse: inherit;
+  border-spacing: 0px;
+}
+#leaderboard td {
+  background-color: #e5e5e5;
+}
+#leaderboard td:first-child {
+  border-radius: 8px 0 0 8px;
+  
+}
+#leaderboard td:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+#content4 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
