@@ -456,7 +456,7 @@ const TuringContract_ABI = [
 		"type": "function"
 	}
 ];
-var users_addr = new Map();
+var users_addr = {};
 users_addr["0xD07318971e2C15b4f8d3d28A0AEF8F16B9D8EAb6"] = "Andre";
 users_addr["0x127B963B9918261Ef713cB7950c4AD16d4Fe18c6"] = "Antonio";
 users_addr["0x5d84D451296908aFA110e6B37b64B1605658283f"] = "Ratonilo";
@@ -533,7 +533,7 @@ function updateHistory() {
 }
 
 function initialize_data(){
-	var data = new Map();
+	var data = {};
 	for(var d in users_addr){
 		data[d] = 0;
 	}
