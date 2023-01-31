@@ -551,7 +551,7 @@ function endedVoting() {
 
             endVotingCard.style = "box-shadow: 0 0 0 200px rgba(0, 0, 0, 0.301) inset;";
             endVotingButton.style.visibility = "hidden";
-        } else if (actualUserAddress in users_addr) {
+        } else if (actualUserAddress == teacher_address) {
             voteCard.style = "box-shadow: 0 0 0 200px rgba(0, 0, 0, 0.301) inset;";
             voteButton.style.visibility = "hidden";
             voteReceiver.disabled = true;
@@ -580,6 +580,7 @@ provider.send("eth_requestAccounts", []).then(() => {
         const signer = provider.getSigner(accounts[0]);
         actualUser = users_addr[signer._address];
         actualUserAddress = signer._address
+
         if (signer._address != teacher_address && (signer._address in users_addr)) {
             issueTokenCard.style = "box-shadow: 0 0 0 200px rgba(0, 0, 0, 0.301) inset;";
             issueTokenButton.style.visibility = "hidden";
@@ -588,7 +589,7 @@ provider.send("eth_requestAccounts", []).then(() => {
 
             endVotingCard.style = "box-shadow: 0 0 0 200px rgba(0, 0, 0, 0.301) inset;";
             endVotingButton.style.visibility = "hidden";
-        } else if (signer._address in users_addr) {
+        } else if (signer._address == teacher_address) {
             voteCard.style = "box-shadow: 0 0 0 200px rgba(0, 0, 0, 0.301) inset;";
             voteButton.style.visibility = "hidden";
             voteReceiver.disabled = true;
