@@ -2,7 +2,7 @@
 let TuringContract;
 
 // 2. Configuração do endereço do contrato e ABI
-const TuringContract_Address = "0x59254971A368d2530f00C9254469Dd97408456E4";
+const TuringContract_Address = "0xBea1386461D4c54B7aC3289be71f77a75fc9780E";
 const TuringContract_ABI = [
 	{
 		"inputs": [],
