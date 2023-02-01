@@ -2,7 +2,7 @@
 let TuringContract;
 
 // 2. Configuração do endereço do contrato e ABI
-const TuringContract_Address = "0xBea1386461D4c54B7aC3289be71f77a75fc9780E";
+const TuringContract_Address = "0x2e177935213dbE1806D60E18D471a6142328327E";
 const TuringContract_ABI = [
 	{
 		"inputs": [],
@@ -649,7 +649,7 @@ const issueToken = async() => {
     const issueTokenAmount = document.querySelector("#issueToken-amount");
     // 5.2 Getting values from the inputs
     receiver = issueTokenReceiver.value;
-    amount = (issueTokenAmount.value * 10 ** 18).toString();
+    amount = (issueTokenAmount.value).toString();
 
     TuringContract.issueToken(receiver, amount)
         .then(() => {
